@@ -17,8 +17,6 @@
 # static fields
 .field public static final AUDIO:Ljava/lang/String; = "com.qti.permission.AUDIO"
 
-.field public static final BIND_QTI_IMS_SERVICE:Ljava/lang/String; = "com.qti.permission.BIND_QTI_IMS_SERVICE"
-
 .field public static final DIAG:Ljava/lang/String; = "com.qti.permission.DIAG"
 
 .field public static final RECEIVE_MSIM_VOICE_CAPABILITY:Ljava/lang/String; = "com.qti.permission.RECEIVE_MSIM_VOICE_CAPABILITY"
