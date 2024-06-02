@@ -6087,21 +6087,8 @@
     .line 1679
     return-void
 
-    .line 1683
-    :cond_0
-    if-nez p4, :cond_1
-
-    .line 1684
-    invoke-static/range {p1 .. p1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
-
-    move-result-object v6
-
-    const/4 v7, 0x0
-
-    invoke-virtual {p0, v6, v7, v0}, Lorg/codeaurora/ims/ImsSenderRxr;->synchronizeMessage(Ljava/lang/String;II)V
-
     .line 1688
-    :cond_1
+    :cond_0
     invoke-direct {p0, v5}, Lorg/codeaurora/ims/ImsSenderRxr;->queueRequest(Lorg/codeaurora/ims/IFRequest;)V
 
     .line 1690
@@ -11888,128 +11875,6 @@
     invoke-static {p0, v0}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 2622
-    return-void
-.end method
-
-.method public synchronizeMessage(Ljava/lang/String;II)V
-    .locals 3
-    .param p1, "callId"    # Ljava/lang/String;
-    .param p2, "callState"    # I
-    .param p3, "commandState"    # I
-
-    .line 2794
-    new-instance v0, Landroid/content/Intent;
-
-    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
-
-    .line 2795
-    .local v0, "intent":Landroid/content/Intent;
-    const-string v1, "com.android.phone"
-
-    invoke-virtual {v0, v1}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 2796
-    if-eqz p2, :cond_0
-
-    .line 2797
-    const-string v1, "miui.intent.action.CALL_STATE"
-
-    invoke-virtual {v0, v1}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 2798
-    const-string v1, "miui.intent.extra.call_state"
-
-    invoke-virtual {v0, v1, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
-
-    goto :goto_0
-
-    .line 2799
-    :cond_0
-    if-eqz p3, :cond_1
-
-    .line 2800
-    const-string v1, "miui.intent.action.USER_COMMAND_STATE"
-
-    invoke-virtual {v0, v1}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 2801
-    const-string v1, "miui.intent.extra.command_state"
-
-    invoke-virtual {v0, v1, p3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
-
-    .line 2803
-    :cond_1
-    :goto_0
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "synchronizeMessage: callId: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, " callstate: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, " commandState: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, " mPhoneId: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    iget-object v2, p0, Lorg/codeaurora/ims/ImsSenderRxr;->mPhoneId:Ljava/lang/Integer;
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {p0, v1}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 2805
-    const-string v1, "miui.intent.extra.call_id"
-
-    invoke-virtual {v0, v1, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 2806
-    const-string v1, "miui.intent.extra.call_phoneid"
-
-    iget-object v2, p0, Lorg/codeaurora/ims/ImsSenderRxr;->mPhoneId:Ljava/lang/Integer;
-
-    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
-
-    .line 2807
-    iget-object v1, p0, Lorg/codeaurora/ims/ImsSenderRxr;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v1, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
-
-    .line 2808
     return-void
 .end method
 
