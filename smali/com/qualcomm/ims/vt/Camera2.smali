@@ -3041,16 +3041,6 @@
 
     if-eqz v1, :cond_0
 
-    const-string v1, "ro.miui.google.csp"
-
-    const/4 v2, 0x0
-
-    invoke-static {v1, v2}, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String;Z)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
     :cond_0
     const/4 v2, 0x1
 
